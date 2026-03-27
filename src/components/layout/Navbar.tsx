@@ -60,7 +60,6 @@ export function Navbar() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   useEffect(() => { setReady(true); }, []);
-  const isDev = process.env.NODE_ENV === 'development';
   const currentV = ((router.query.v as string) ?? '1') as string;
 
   const switchMockup = (v: string) => {
@@ -129,8 +128,7 @@ export function Navbar() {
 
         {/* Desktop right actions */}
         <motion.div variants={itemVariants} className="hidden items-center gap-3 lg:flex">
-          {isDev && (
-            <div className="flex items-center rounded-full border border-dashed border-purple-300 bg-purple-50 p-[3px]">
+          <div className="flex items-center rounded-full border border-dashed border-purple-300 bg-purple-50 p-[3px]">
               {['1', '2', '3'].map((v) => (
                 <button
                   key={v}
@@ -151,7 +149,6 @@ export function Navbar() {
                 </button>
               ))}
             </div>
-          )}
           <LangToggle locale={locale} onSwitch={switchLang} layoutId="lang-pill" />
           <a
             href="https://webfactoring2.banpro.cl/index.html"
