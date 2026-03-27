@@ -17,11 +17,6 @@ const NAV_LINKS = [
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const itemVariants = {
-  hidden: {},
-  visible: {},
-};
-
 function LangToggle({ locale, onSwitch, layoutId }: Readonly<{ locale: string; onSwitch: () => void; layoutId: string }>) {
   return (
     <button
@@ -77,11 +72,24 @@ export function Navbar() {
     router.push('/', '/', { locale: next });
   };
 
+  const handleNav = (href: string) => {
+    setOpen(false);
+    setTimeout(() => {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    }, 250);
+  };
+
+  const anim = (delay: number) => ({
+    initial: { opacity: 0, y: -10 },
+    animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 },
+    transition: { delay, duration: 0.2, ease: EASE },
+  });
+
   return (
     <motion.header
-      initial={{ opacity: 0, y: -24 }}
-      animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: -24 }}
-      transition={{ duration: 0.35, ease: EASE }}
+      initial={{ opacity: 0, y: -20 }}
+      animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+      transition={{ duration: 0.2, ease: EASE }}
       className={clsx(
         'fixed inset-x-0 top-0 z-50 transition-all duration-500',
         scrolled
@@ -92,7 +100,7 @@ export function Navbar() {
       <div className="container-site flex h-16 items-center justify-between lg:h-[70px]">
 
         {/* Logo */}
-        <motion.a variants={itemVariants} href="#" className="flex items-center">
+        <motion.a {...anim(0.05)} href="#" className="flex items-center">
           <Image
             src="/logotipo.png"
             alt="Banpro Factoring"
@@ -105,10 +113,10 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex">
-          {NAV_LINKS.map(({ href, key }) => (
+          {NAV_LINKS.map(({ href, key }, i) => (
             <motion.a
               key={href}
-              variants={itemVariants}
+              {...anim(0.1 + i * 0.04)}
               href={href}
               onMouseEnter={() => setHoveredLink(href)}
               onMouseLeave={() => setHoveredLink(null)}
@@ -127,28 +135,28 @@ export function Navbar() {
         </nav>
 
         {/* Desktop right actions */}
-        <motion.div variants={itemVariants} className="hidden items-center gap-3 lg:flex">
+        <motion.div {...anim(0.32)} className="hidden items-center gap-3 lg:flex">
           <div className="flex items-center rounded-full border border-dashed border-purple-300 bg-purple-50 p-[3px]">
-              {['1', '2', '3'].map((v) => (
-                <button
-                  key={v}
-                  onClick={() => switchMockup(v)}
-                  className={clsx(
-                    'relative rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest transition-colors duration-200',
-                    currentV === v ? 'text-white' : 'text-purple-400 hover:text-purple-600',
-                  )}
-                >
-                  {currentV === v && (
-                    <motion.span
-                      layoutId="mockup-pill"
-                      className="absolute inset-0 rounded-full bg-purple-500"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative">v{v}</span>
-                </button>
-              ))}
-            </div>
+            {['1', '2', '3'].map((v) => (
+              <button
+                key={v}
+                onClick={() => switchMockup(v)}
+                className={clsx(
+                  'relative rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest transition-colors duration-200',
+                  currentV === v ? 'text-white' : 'text-purple-400 hover:text-purple-600',
+                )}
+              >
+                {currentV === v && (
+                  <motion.span
+                    layoutId="mockup-pill"
+                    className="absolute inset-0 rounded-full bg-purple-500"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative">v{v}</span>
+              </button>
+            ))}
+          </div>
           <LangToggle locale={locale} onSwitch={switchLang} layoutId="lang-pill" />
           <a
             href="https://webfactoring2.banpro.cl/index.html"
@@ -162,7 +170,7 @@ export function Navbar() {
 
         {/* Hamburger */}
         <motion.button
-          variants={itemVariants}
+          {...anim(0.15)}
           onClick={() => setOpen(!open)}
           aria-label="Menú"
           className="relative flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-gray-100 lg:hidden"
@@ -195,20 +203,19 @@ export function Navbar() {
           >
             <div className="container-site flex flex-col py-4">
               {NAV_LINKS.map(({ href, key }, i) => (
-                <motion.a
+                <motion.button
                   key={href}
-                  href={href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleNav(href)}
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.3, ease: EASE }}
-                  className="flex items-center justify-between border-b border-gray-50 py-3.5 text-sm font-medium text-gray-700 transition-colors hover:text-brand-primary"
+                  className="flex items-center justify-between border-b border-gray-50 py-3.5 text-left text-sm font-medium text-gray-700 transition-colors hover:text-brand-primary"
                 >
                   {t(key)}
                   <svg className="h-4 w-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
-                </motion.a>
+                </motion.button>
               ))}
               <motion.div
                 initial={{ opacity: 0 }}
