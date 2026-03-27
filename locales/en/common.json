@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "title": "Banpro Factoring — Fast liquidity for your business",
+    "description": "Banpro Factoring S.A. provides immediate liquidity to SMEs through invoice purchasing. Credit line opening in 24 hours. 17+ branches across Chile."
+  },
+  "nav": {
+    "about": "About",
+    "factoring": "Factoring",
+    "requirements": "Requirements",
+    "branches": "Branches",
+    "contact": "Contact",
+    "webfactoring": "Web Factoring"
+  },
+  "hero": {
+    "eyebrow": "Factoring for SMEs in Chile and Peru",
+    "title_1": "Liquidity for your",
+    "title_highlight": "business",
+    "title_2": "in 24 hours.",
+    "subtitle": "Banpro turns your invoices into working capital instantly. No slow paperwork, no bureaucracy. Just results.",
+    "cta_contact": "Contact us",
+    "cta_webfactoring": "Go to Web Factoring",
+    "stat1": "Credit line opening",
+    "stat2": "Branches in Chile",
+    "stat3": "Online transparency"
+  },
+  "nosotros": {
+    "label": "Who we are",
+    "title": "Speed and closeness at the service of your business.",
+    "description": "Banpro S.A. is a factoring company founded by executives with extensive experience in the financial sector, focused on meeting the working capital financing needs of small and medium-sized enterprises through the purchase of their accounts receivable.",
+    "v1_title": "Speed",
+    "v1_desc": "Credit line opening in 24 hours. Same-day transaction processing.",
+    "v2_title": "Closeness",
+    "v2_desc": "We know our clients and their needs. Direct contact with specialized account managers.",
+    "v3_title": "Transparency",
+    "v3_desc": "All your transaction information available online, in real time.",
+    "board_label": "Board of Directors",
+    "cta": "Talk to an executive"
+  },
+  "factoring": {
+    "label": "Our service",
+    "title": "Factoring in your hands.",
+    "description": "Access immediate liquidity by assigning your invoices from anywhere. Our Web Factoring platform makes the process 100% digital, fast and transparent.",
+    "b1_title": "Sign the contract online",
+    "b1_desc": "Sign your contract without leaving your office, using your advanced digital signature or directly on our platform.",
+    "b2_title": "Online operations",
+    "b2_desc": "Get a quote without being a client and assign your invoices with a single click. Subject to prior line approval.",
+    "b3_title": "Online reports",
+    "b3_desc": "Access your full transaction history for 100% transparent management in real time.",
+    "cta": "Access Web Factoring"
+  },
+  "requisitos": {
+    "label": "Requirements to operate",
+    "title": "Get started in 24 hours.",
+    "description": "By submitting these documents, you will be ready to process your first factoring transaction within 24 hours.",
+    "type1": "Individual (Persona Natural)",
+    "type2": "Limited Liability Company",
+    "type3": "Corporation (S.A.)",
+    "type4": "Shares Company (SpA)",
+    "type5": "EIRL",
+    "type6": "Law N° 20.659",
+    "approval_note": "Documents required to open a credit line:",
+    "doc_rut": "Copy of RUT (tax ID) of legal representative and partners",
+    "doc_sii": "VAT returns (Form. 29) for the last 12 months",
+    "doc_bank": "Last 3 bank account statements",
+    "doc_resume": "Company profile (age, business type, main clients)",
+    "doc_constitution": "Articles of incorporation and current amendments",
+    "doc_board": "Current board minutes with powers of attorney",
+    "doc_ley20659": "Statute obtained from the Companies and Societies Registry",
+    "footnote": "a) Approval subject to verification of financial and legal background.\nb) Additional documents may be requested after reviewing the submitted information."
+  },
+  "sucursales": {
+    "label": "National presence",
+    "title": "17 branches across Chile.",
+    "description": "From Iquique to Punta Arenas, we are where your business needs us.",
+    "footer_note": "Can't find a nearby branch? Contact us — we operate throughout Chile.",
+    "cta": "Contact us"
+  },
+  "contacto": {
+    "label": "Contact",
+    "title": "Let's talk?",
+    "description": "Leave us your details and one of our account managers will contact you within 24 hours.",
+    "address_label": "Address",
+    "address_value": "Av. Apoquindo 5550, Of 601-B, Santiago",
+    "phone_label": "Phone",
+    "phone_value": "+56 2 27605600",
+    "email_label": "Email",
+    "email_value": "contacto@banpro.cl",
+    "field_nombre": "Full name",
+    "field_razonSocial": "Company name",
+    "field_rut": "RUT (Tax ID)",
+    "field_telefono": "Phone",
+    "field_email": "Email",
+    "field_mensaje": "Message (optional)",
+    "submit": "Send message",
+    "success_title": "Message sent!",
+    "success_desc": "An executive will contact you within 24 hours."
+  },
+  "footer": {
+    "tagline": "Fast liquidity for small and medium-sized businesses. Operating in Chile and Peru.",
+    "nav_title": "Navigation",
+    "rights": "All rights reserved.",
+    "complaints": "Complaints Channel"
+  }
+}

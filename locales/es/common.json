@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "title": "Banpro Factoring — Liquidez rápida para tu empresa",
+    "description": "Banpro Factoring S.A. entrega liquidez inmediata a PYMEs mediante la compra de cuentas por cobrar. Apertura de línea en 24 horas. 17+ sucursales en Chile."
+  },
+  "nav": {
+    "about": "Nosotros",
+    "factoring": "Factoring",
+    "requirements": "Requisitos",
+    "branches": "Sucursales",
+    "contact": "Contacto",
+    "webfactoring": "Web Factoring"
+  },
+  "hero": {
+    "eyebrow": "Factoring para PYMEs en Chile y Perú",
+    "title_1": "Liquidez para tu",
+    "title_highlight": "empresa",
+    "title_2": "en 24 horas.",
+    "subtitle": "Banpro convierte tus facturas en capital de trabajo al instante. Sin trámites lentos, sin burocracia. Solo resultados.",
+    "cta_contact": "Contáctanos",
+    "cta_webfactoring": "Ir a Web Factoring",
+    "stat1": "Apertura de línea",
+    "stat2": "Sucursales en Chile",
+    "stat3": "Transparencia online"
+  },
+  "nosotros": {
+    "label": "Quiénes somos",
+    "title": "Rapidez y cercanía al servicio de tu empresa.",
+    "description": "Banpro S.A. es una empresa de factoring constituida por ejecutivos con vasta trayectoria en el sector financiero, orientada a satisfacer las necesidades de financiamiento de capital de trabajo de las pequeñas y medianas empresas mediante la compra de sus cuentas por cobrar.",
+    "v1_title": "Rapidez",
+    "v1_desc": "Apertura de línea en 24 horas. Giro de operaciones dentro del mismo día.",
+    "v2_title": "Cercanía",
+    "v2_desc": "Conocemos a nuestros clientes y sus necesidades. Trato directo con ejecutivos especializados.",
+    "v3_title": "Transparencia",
+    "v3_desc": "Toda la información de tus operaciones disponible en línea, en tiempo real.",
+    "board_label": "Directorio",
+    "cta": "Habla con un ejecutivo"
+  },
+  "factoring": {
+    "label": "Nuestro servicio",
+    "title": "El factoring en tu mano.",
+    "description": "Accede a liquidez inmediata cediendo tus facturas desde cualquier lugar. Nuestra plataforma Web Factoring hace el proceso 100% digital, rápido y transparente.",
+    "b1_title": "Firma el contrato en línea",
+    "b1_desc": "Firma tu contrato sin moverte de tu oficina, con firma digital avanzada o directamente en nuestra plataforma.",
+    "b2_title": "Operaciones en línea",
+    "b2_desc": "Cotiza sin ser cliente y cede tus facturas con un solo clic. Previa aprobación de la línea.",
+    "b3_title": "Informes en línea",
+    "b3_desc": "Accede a todo tu historial de operaciones para una gestión 100% transparente en tiempo real.",
+    "cta": "Acceder a Web Factoring"
+  },
+  "requisitos": {
+    "label": "Requisitos para operar",
+    "title": "Empieza en 24 horas.",
+    "description": "Presentando estos antecedentes, en 24 horas estarás en condiciones de cursar tu primera operación de factoring.",
+    "type1": "Persona Natural",
+    "type2": "Sociedad de Resp. Ltda.",
+    "type3": "Sociedad Anónima",
+    "type4": "Sociedad por Acciones",
+    "type5": "EIRL",
+    "type6": "Ley N° 20.659",
+    "approval_note": "Documentos requeridos para apertura de línea:",
+    "doc_rut": "Copia de RUT del representante legal y socios",
+    "doc_sii": "Declaraciones de IVA (Form. 29) de los últimos 12 meses",
+    "doc_bank": "Últimos 3 estados de cuenta bancarios",
+    "doc_resume": "Currículum de la empresa (antigüedad, giro, principales clientes)",
+    "doc_constitution": "Escritura de constitución y modificaciones vigentes",
+    "doc_board": "Acta de directorio vigente con poderes",
+    "doc_ley20659": "Estatuto obtenido en el Registro de Empresas y Sociedades",
+    "footnote": "a) Aprobación sujeta a la verificación de antecedentes financieros y legales.\nb) Del estudio de los antecedentes, eventualmente se podría solicitar algún otro documento."
+  },
+  "sucursales": {
+    "label": "Presencia nacional",
+    "title": "17 sucursales a lo largo de Chile.",
+    "description": "Desde Iquique hasta Punta Arenas, estamos donde tu empresa nos necesita.",
+    "footer_note": "¿No encuentras una sucursal cerca? Contáctanos, operamos en todo Chile.",
+    "cta": "Contáctanos"
+  },
+  "contacto": {
+    "label": "Contacto",
+    "title": "¿Hablemos?",
+    "description": "Déjanos tus datos y uno de nuestros ejecutivos comerciales se contactará contigo en menos de 24 horas.",
+    "address_label": "Dirección",
+    "address_value": "Av. Apoquindo 5550, Of 601-B, Santiago",
+    "phone_label": "Teléfono",
+    "phone_value": "+56 2 27605600",
+    "email_label": "Email",
+    "email_value": "contacto@banpro.cl",
+    "field_nombre": "Nombre",
+    "field_razonSocial": "Razón Social",
+    "field_rut": "RUT",
+    "field_telefono": "Teléfono",
+    "field_email": "Email",
+    "field_mensaje": "Mensaje (opcional)",
+    "submit": "Enviar mensaje",
+    "success_title": "¡Mensaje enviado!",
+    "success_desc": "Un ejecutivo se contactará contigo en menos de 24 horas."
+  },
+  "footer": {
+    "tagline": "Liquidez rápida para la pequeña y mediana empresa. Operamos en Chile y Perú.",
+    "nav_title": "Navegación",
+    "rights": "Todos los derechos reservados.",
+    "complaints": "Canal de Denuncias"
+  }
+}
