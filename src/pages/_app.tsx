@@ -8,8 +8,8 @@ import '@/styles/globals.css';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <NextIntlClientProvider
-      locale={pageProps.locale}
-      messages={pageProps.messages}
+      locale={pageProps.locale ?? 'es'}
+      messages={pageProps.messages ?? {}}
       timeZone="America/Santiago"
     >
       <main className={clsx('flex min-h-full w-full flex-col')}>
