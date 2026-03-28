@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
@@ -17,29 +17,24 @@ const NAV_LINKS = [
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-function LangToggle({ locale, onSwitch, layoutId }: Readonly<{ locale: string; onSwitch: () => void; layoutId: string }>) {
+function LangToggle({ locale, onSwitch }: Readonly<{ locale: string; onSwitch: () => void; layoutId: string }>) {
   return (
     <button
       onClick={onSwitch}
       aria-label="Cambiar idioma"
-      className="relative flex items-center rounded-full border border-gray-200 bg-gray-100 p-[3px] shadow-inner"
+      className="flex items-center rounded-full border border-gray-200 bg-gray-100 p-[3px] shadow-inner"
     >
       {(['es', 'en'] as const).map((lang) => (
         <span
           key={lang}
           className={clsx(
-            'relative z-10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest transition-colors duration-300',
-            locale === lang ? 'text-white' : 'text-gray-400 hover:text-gray-600',
+            'rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-widest transition-all duration-200',
+            locale === lang
+              ? 'bg-brand-primary text-white shadow-md shadow-brand-primary/40'
+              : 'text-gray-400 hover:text-gray-600',
           )}
         >
-          {locale === lang && (
-            <motion.span
-              layoutId={layoutId}
-              className="absolute inset-0 rounded-full bg-brand-primary shadow-md shadow-brand-primary/40"
-              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            />
-          )}
-          <span className="relative">{lang.toUpperCase()}</span>
+          {lang.toUpperCase()}
         </span>
       ))}
     </button>
@@ -51,9 +46,11 @@ export function Navbar() {
   const locale = useLocale();
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
+  const lastScrollY = useRef(0);
   useEffect(() => { setReady(true); }, []);
   const currentV = ((router.query.v as string) ?? '1') as string;
 
@@ -62,7 +59,17 @@ export function Navbar() {
   };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      if (y > lastScrollY.current && y > 80) {
+        setHidden(true);
+        setOpen(false);
+      } else {
+        setHidden(false);
+      }
+      lastScrollY.current = y;
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -88,7 +95,7 @@ export function Navbar() {
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
-      animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+      animate={ready ? { opacity: 1, y: hidden ? '-100%' : 0 } : { opacity: 0, y: -20 }}
       transition={{ duration: 0.2, ease: EASE }}
       className={clsx(
         'fixed inset-x-0 top-0 z-50 transition-all duration-500',
@@ -102,7 +109,7 @@ export function Navbar() {
         {/* Logo */}
         <motion.a {...anim(0.05)} href="#" className="flex items-center">
           <Image
-            src="/logotipo.png"
+            src="/logotipo-removebg-preview.png"
             alt="Banpro Factoring"
             width={130}
             height={48}
@@ -142,18 +149,11 @@ export function Navbar() {
                 key={v}
                 onClick={() => switchMockup(v)}
                 className={clsx(
-                  'relative rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest transition-colors duration-200',
-                  currentV === v ? 'text-white' : 'text-purple-400 hover:text-purple-600',
+                  'rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest transition-all duration-200',
+                  currentV === v ? 'bg-purple-500 text-white' : 'text-purple-400 hover:text-purple-600',
                 )}
               >
-                {currentV === v && (
-                  <motion.span
-                    layoutId="mockup-pill"
-                    className="absolute inset-0 rounded-full bg-purple-500"
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  />
-                )}
-                <span className="relative">v{v}</span>
+                v{v}
               </button>
             ))}
           </div>
