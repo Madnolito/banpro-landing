@@ -172,12 +172,7 @@ export default function Sucursales() {
                   )}
                 </div>
 
-                {/* Sidebar footer */}
-                <div className="shrink-0 border-t border-white/[0.05] px-5 py-4">
-                  <a href="#contacto" className="btn-primary block w-full py-2.5 text-center text-sm">
-                    {t('cta')}
-                  </a>
-                </div>
+
               </div>
             </div>
           </div>

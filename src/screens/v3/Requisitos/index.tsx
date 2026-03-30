@@ -34,7 +34,7 @@ export default function Requisitos() {
           </FadeIn>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-3">
           <FadeIn dir="left" className="lg:col-span-1">
             <div className="flex flex-row gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0">
               {TIPOS.map(({ key, labelKey }) => (

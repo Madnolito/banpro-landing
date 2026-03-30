@@ -67,7 +67,8 @@ export default function ChileMap({ dots, selected, onSelect }: Props) {
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const [loaded, setLoaded]               = useState(false);
 
-  const selectedDot = dots.find(d => d.id === selected) ?? null;
+  const selectedDot    = dots.find(d => d.id === selected) ?? null;
+  const containerRef   = useRef<HTMLDivElement>(null);
 
   // ── Load & inject SVG ──────────────────────────────────
   useEffect(() => {
@@ -139,19 +140,28 @@ export default function ChileMap({ dots, selected, onSelect }: Props) {
     }
   }, [selected, loaded]); // re-run after load too, in case selected was set before SVG ready
 
-  // ── Zoom origin ────────────────────────────────────────
-  const originX = selectedDot ? selectedDot.svgX / 1000 : 0.5;
-  const originY = selectedDot ? selectedDot.svgY / 1000 : 0.5;
+  // Compute x/y translation to visually centre the selected dot.
+  // originX/Y stays at 0.5 so the pivot never snaps — all motion is in animate.
+  let animX = 0;
+  let animY = 0;
+  if (selectedDot && containerRef.current) {
+    const { width: W, height: H } = containerRef.current.getBoundingClientRect();
+    const rendered  = Math.min(W, H); // SVG uses xMidYMid meet on a 1000×1000 viewBox
+    const dotCssX   = (W - rendered) / 2 + (selectedDot.svgX / 1000) * rendered;
+    const dotCssY   = (H - rendered) / 2 + (selectedDot.svgY / 1000) * rendered;
+    animX = -ZOOM_SCALE * (dotCssX - W / 2);
+    animY = -ZOOM_SCALE * (dotCssY - H / 2);
+  }
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-full overflow-hidden">
 
-      {/* Zoom wrapper */}
+      {/* Zoom wrapper — x/y pan to the city, scale zooms in; all three spring together */}
       <motion.div
         className="absolute inset-0"
-        animate={{ scale: selected ? ZOOM_SCALE : 1 }}
-        style={{ originX, originY }}
-        transition={{ type: 'spring', stiffness: 90, damping: 20 }}
+        animate={{ scale: selected ? ZOOM_SCALE : 1, x: animX, y: animY }}
+        style={{ originX: 0.5, originY: 0.5 }}
+        transition={{ type: 'spring', stiffness: 90, damping: 22 }}
         onClick={() => onSelect(null)}
       >
         {/* Chile SVG */}
@@ -164,22 +174,21 @@ export default function ChileMap({ dots, selected, onSelect }: Props) {
             className="absolute inset-0 w-full h-full pointer-events-none"
             preserveAspectRatio="xMidYMid meet"
           >
-            {dots.map(dot => {
-              const isSel = dot.id === selected;
+            {dots.map((dot, i) => {
+              const isSel   = dot.id === selected;
+              const offset  = `${(i * 0.18) % 1.6}s`;
+              const offset2 = `${((i * 0.18) + 0.55) % 1.6}s`;
               return (
                 <g key={dot.id}>
-                  {isSel && (
-                    <>
-                      <circle cx={dot.svgX} cy={dot.svgY} r="8" fill="none" stroke="#F86213" strokeWidth="1.5">
-                        <animate attributeName="r"       values="8;22"  dur="1.6s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="0.7;0" dur="1.6s" repeatCount="indefinite" />
-                      </circle>
-                      <circle cx={dot.svgX} cy={dot.svgY} r="8" fill="none" stroke="#F86213" strokeWidth="1">
-                        <animate attributeName="r"       values="8;22"  dur="1.6s" begin="0.55s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="0.4;0" dur="1.6s" begin="0.55s" repeatCount="indefinite" />
-                      </circle>
-                    </>
-                  )}
+                  {/* Ripple rings — always visible, staggered per dot */}
+                  <circle cx={dot.svgX} cy={dot.svgY} r="4" fill="none" stroke="#F86213" strokeWidth="1">
+                    <animate attributeName="r"       values={isSel ? '8;22' : '4;16'} dur="2s" begin={offset}  repeatCount="indefinite" />
+                    <animate attributeName="opacity" values={isSel ? '0.7;0' : '0.55;0'} dur="2s" begin={offset}  repeatCount="indefinite" />
+                  </circle>
+                  <circle cx={dot.svgX} cy={dot.svgY} r="4" fill="none" stroke="#F86213" strokeWidth="0.7">
+                    <animate attributeName="r"       values={isSel ? '8;22' : '4;16'} dur="2s" begin={offset2} repeatCount="indefinite" />
+                    <animate attributeName="opacity" values={isSel ? '0.4;0' : '0.35;0'} dur="2s" begin={offset2} repeatCount="indefinite" />
+                  </circle>
                   <circle
                     cx={dot.svgX} cy={dot.svgY}
                     r={isSel ? 7 : 4}
