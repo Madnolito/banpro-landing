@@ -13,8 +13,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        display: ['Outfit', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
+        display: ['Roboto', 'sans-serif'],
+        sans: ['Roboto', 'sans-serif'],
       },
       screens: {
         xs: '375px',
