@@ -96,8 +96,8 @@ export function WFButton({ label }: Props) {
         className="pointer-events-none absolute inset-0"
         animate={{
           filter: active
-            ? 'drop-shadow(0 3px 10px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(248,98,19,0.45))'
-            : 'drop-shadow(0 3px 7px rgba(0,0,0,0.2)) drop-shadow(0 1px 2px rgba(0,0,0,0.1))',
+            ? 'drop-shadow(0px 4px 14px rgba(248,98,19,0.5))'
+            : 'drop-shadow(0px 3px 8px rgba(0,0,0,0.2))',
         }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
       >

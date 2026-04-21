@@ -119,7 +119,7 @@ export default function Sucursales() {
                 <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-full border border-white/[0.06] bg-brand-dark/85 px-3 py-1.5 backdrop-blur-md">
                   <span className={`h-1.5 w-1.5 rounded-full transition-colors duration-300 ${selected ? 'bg-brand-primary animate-pulse' : 'bg-white/30'}`} />
                   <span className="text-[11px] font-medium text-white/55">
-                    {selectedCity ? selectedCity.name : '17 sucursales'}
+                    {selectedCity ? selectedCity.name : '11 sucursales'}
                   </span>
                 </div>
 

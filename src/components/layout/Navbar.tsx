@@ -211,7 +211,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: EASE }}
-            className="overflow-hidden border-t border-gray-100 bg-white lg:hidden"
+            className="overflow-hidden border-t border-gray-100 lg:hidden"
           >
             <div className="container-site flex flex-col py-4">
               {NAV_LINKS.map(({ href, key }, i) => (
