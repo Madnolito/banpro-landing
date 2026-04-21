@@ -85,9 +85,14 @@ export function WFButton({ label }: Props) {
 
   return (
     // Contenedor fijo: el espacio en el layout nunca cambia
-    <div
+    <motion.div
       style={{ width: 160, height: 44 }}
       className="relative flex-shrink-0"
+      animate={active ? { scale: 1 } : { scale: [1, 1.025, 1] }}
+      transition={active
+        ? { duration: 0.2 }
+        : { duration: 2.7, repeat: Infinity, ease: 'easeInOut' }
+      }
       onMouseEnter={() => { setHovered(true); hoveredRef.current = true; }}
       onMouseLeave={() => { setHovered(false); hoveredRef.current = false; }}
     >
@@ -166,6 +171,6 @@ export function WFButton({ label }: Props) {
           )}
         </AnimatePresence>
       </motion.a>
-    </div>
+    </motion.div>
   );
 }

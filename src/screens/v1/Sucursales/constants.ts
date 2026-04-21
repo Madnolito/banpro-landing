@@ -29,8 +29,8 @@ export const SUCURSALES: Sucursal[] = [
   { id: 'concepcion',  name: 'Concepción',  zone: 'Centro', svgX: 460, svgY: 517, address: 'Av. Test 1823, Of. 201',        phone: '+56 41 2 123 456' },
   { id: 'losangeles',  name: 'Los Ángeles', zone: 'Centro', svgX: 476, svgY: 532, address: 'Av. Test 1823, Of. 201',        phone: '+56 43 2 123 456' },
   // ── SUR
-  { id: 'osorno',      name: 'Osorno',      zone: 'Sur',    svgX: 458, svgY: 603, address: 'Av. Test 1823, Of. 201',        phone: '+56 64 2 123 456' },
-  { id: 'puertomontt', name: 'Puerto Montt',zone: 'Sur',    svgX: 463, svgY: 624, address: 'Av. Test 1823, Of. 201',        phone: '+56 65 2 123 456' },
+  { id: 'osorno',      name: 'Osorno',      zone: 'Sur',    svgX: 464, svgY: 594, address: 'Av. Test 1823, Of. 201',        phone: '+56 64 2 123 456' },
+  { id: 'puertomontt', name: 'Puerto Montt',zone: 'Sur',    svgX: 469, svgY: 604, address: 'Av. Test 1823, Of. 201',        phone: '+56 65 2 123 456' },
   { id: 'puntaarenas', name: 'Punta Arenas',zone: 'Sur',    svgX: 509, svgY: 891, address: 'Av. Test 1823, Of. 201',        phone: '+56 61 2 123 456' },
 ];
 
