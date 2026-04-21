@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 
 import clsx from 'clsx';
 
+import { WFButton } from './WFButton';
+
 const NAV_LINKS = [
   { href: '#nosotros', key: 'about' },
   { href: '#factoring', key: 'factoring' },
@@ -28,7 +30,7 @@ function LangToggle({ locale, onSwitch }: Readonly<{ locale: string; onSwitch: (
         <span
           key={lang}
           className={clsx(
-            'rounded-full px-3 py-1 text-[12.5px] font-bold uppercase tracking-widest transition-all duration-200',
+            'rounded-full px-3 py-1 text-[11.5px] font-bold uppercase tracking-widest transition-all duration-200',
             locale === lang
               ? 'bg-brand-primary text-white shadow-md shadow-brand-primary/40'
               : 'text-gray-400 hover:text-gray-600',
@@ -62,10 +64,10 @@ export function Navbar() {
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 40);
-      if (y > lastScrollY.current && y > 80) {
+      if (y > lastScrollY.current + 8 && y > 80) {
         setHidden(true);
         setOpen(false);
-      } else {
+      } else if (y < lastScrollY.current - 8) {
         setHidden(false);
       }
       lastScrollY.current = y;
@@ -99,12 +101,13 @@ export function Navbar() {
       transition={{ duration: 0.2, ease: EASE }}
       className={clsx(
         'fixed inset-x-0 top-0 z-50 transition-all duration-500',
+        hidden && 'pointer-events-none',
         scrolled
-          ? 'border-b border-gray-200/60 bg-white shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08),inset_0_-1px_0_rgba(255,255,255,0.9)]'
-          : 'border-b border-gray-100/50 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04),inset_0_-1px_0_rgba(255,255,255,0.7)]',
+          ? 'border-b border-gray-200/60 bg-white/[0.97] backdrop-blur-sm shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08),inset_0_-1px_0_rgba(255,255,255,0.9)]'
+          : 'border-b border-gray-100/50 bg-white/95 backdrop-blur-sm shadow-[0_1px_8px_rgba(0,0,0,0.04),inset_0_-1px_0_rgba(255,255,255,0.7)]',
       )}
     >
-<div className="container-site flex h-16 items-center justify-between lg:h-[70px]">
+      <div className="container-site flex h-16 items-center justify-between lg:h-[70px]">
 
         {/* Logo */}
         <motion.a {...anim(0.05)} href="#" className="flex items-center">
@@ -134,7 +137,7 @@ export function Navbar() {
                 default: { delay: 0.1 + i * 0.04, duration: 0.2, ease: EASE },
                 scale: { type: 'spring', stiffness: 300, damping: 22 },
               }}
-              className="relative px-3.5 pb-2.5 pt-2 text-[12.5px] font-semibold uppercase tracking-wider"
+              className="relative px-3.5 pb-2.5 pt-2 text-[11.5px] font-semibold uppercase tracking-wider"
             >
               <motion.span
                 className="relative z-10 block"
@@ -174,16 +177,7 @@ export function Navbar() {
             ))}
           </div>
           <LangToggle locale={locale} onSwitch={switchLang} layoutId="lang-pill" />
-          <motion.a
-            href="https://webfactoring2.banpro.cl/index.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.93 }}
-            className="btn-primary rounded-full py-2 text-[11px] uppercase tracking-wider"
-          >
-            {t('webfactoring')}
-          </motion.a>
+          <WFButton label={t('webfactoring')} />
         </motion.div>
 
         {/* Hamburger */}
