@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 
 import { interpolate } from 'flubber';
 import { animate, AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
@@ -42,6 +42,9 @@ interface Props {
 }
 
 export function WFButton({ label }: Props) {
+  const uid = useId();
+  const gradId = `wfBtnGrad-${uid}`;
+  const shineId = `wfBtnShine-${uid}`;
   const [hovered, setHovered] = useState(false);
   const [autoPlaying, setAutoPlaying] = useState(false);
   const hoveredRef = useRef(false);
@@ -63,12 +66,12 @@ export function WFButton({ label }: Props) {
     const play = () => {
       if (hoveredRef.current) return; // no interrumpe al usuario
       setAutoPlaying(true);
-      setTimeout(() => setAutoPlaying(false), 1600);
+      setTimeout(() => setAutoPlaying(false), 3600);
     };
 
     const initialTimer = setTimeout(() => {
       play();
-      intervalId = setInterval(play, 8000);
+      intervalId = setInterval(play, 11000);
     }, 3000);
 
     return () => {
@@ -101,20 +104,20 @@ export function WFButton({ label }: Props) {
         <svg width="160" height="44" viewBox="0 0 160 44" xmlns="http://www.w3.org/2000/svg">
           <defs>
             {/* Degradado principal: naranja vivo arriba → naranja quemado abajo */}
-            <linearGradient id="wfBtnGrad" x1="0.1" y1="0" x2="0.9" y2="1" gradientUnits="objectBoundingBox">
+            <linearGradient id={gradId} x1="0.1" y1="0" x2="0.9" y2="1" gradientUnits="objectBoundingBox">
               <stop offset="0%" stopColor="#FF8C42" />
               <stop offset="100%" stopColor="#C94B0A" />
             </linearGradient>
             {/* Brillo superior: franja blanca semitransparente */}
-            <linearGradient id="wfBtnShine" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+            <linearGradient id={shineId} x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
               <stop offset="0%" stopColor="white" stopOpacity="0.12" />
               <stop offset="55%" stopColor="white" stopOpacity="0" />
             </linearGradient>
           </defs>
           {/* Capa base con degradado */}
-          <motion.path fill="url(#wfBtnGrad)" d={morphedPath} />
+          <motion.path fill={`url(#${gradId})`} d={morphedPath} />
           {/* Capa de brillo (mismo path, encima) */}
-          <motion.path fill="url(#wfBtnShine)" d={morphedPath} />
+          <motion.path fill={`url(#${shineId})`} d={morphedPath} />
         </svg>
       </motion.div>
 
