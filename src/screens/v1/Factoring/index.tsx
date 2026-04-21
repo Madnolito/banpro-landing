@@ -12,7 +12,7 @@ export default function Factoring() {
   const t = useTranslations('factoring');
 
   return (
-    <section id="factoring" className="bg-brand-light py-24 lg:py-32">
+    <section id="factoring" className="bg-brand-light py-24 lg:py-32 scroll-mt-20">
       <div className="container-site">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>

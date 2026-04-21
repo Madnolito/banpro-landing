@@ -92,7 +92,7 @@ export default function Sucursales() {
     setSelected(prev => (prev === id ? null : id));
 
   return (
-    <section id="sucursales" className="bg-brand-dark py-24 lg:py-32 overflow-hidden">
+    <section id="sucursales" className="bg-brand-dark py-24 lg:py-32 overflow-hidden scroll-mt-20">
       <div className="container-site">
 
         {/* ── Header ─────────────────────────────────── */}

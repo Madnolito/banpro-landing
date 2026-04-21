@@ -55,7 +55,7 @@ export default function Contacto() {
   };
 
   return (
-    <section id="contacto" className="relative overflow-hidden bg-brand-light py-24 lg:py-32">
+    <section id="contacto" className="relative overflow-hidden bg-brand-light py-24 lg:py-32 scroll-mt-20">
       <div className="container-site">
         <div className="grid items-start gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
 

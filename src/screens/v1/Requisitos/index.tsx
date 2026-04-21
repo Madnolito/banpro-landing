@@ -20,7 +20,7 @@ export default function Requisitos() {
   const current = TIPOS.find((item) => item.key === selected)!;
 
   return (
-    <section id="requisitosparaoperar" className="bg-white py-24 lg:py-32">
+    <section id="requisitosparaoperar" className="bg-white py-24 lg:py-32 scroll-mt-20">
       <div className="container-site">
         <div className="mb-12 max-w-2xl">
           <FadeIn>

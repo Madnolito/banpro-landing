@@ -103,12 +103,6 @@ export default function Hero() {
       <div className="absolute -bottom-32 left-[3%] h-[400px] w-[400px] rounded-full bg-brand-accent/8 blur-[110px]" />
       <div className="absolute left-[45%] top-[55%] h-[300px] w-[300px] rounded-full bg-brand-secondary/8 blur-[90px]" />
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-      <svg className="absolute right-0 top-0 h-full w-1/2 opacity-[0.025]" preserveAspectRatio="none">
-        {[0,1,2,3,4,5,6,7,8,9,10,11].map((i) => (
-          <line key={i} x1={`${i * 10}%`} y1="0%" x2={`${i * 10 + 60}%`} y2="100%" stroke="white" strokeWidth="1" />
-        ))}
-      </svg>
-
       <div className="container-site relative z-10 grid grid-cols-1 items-center gap-10 pb-24 pt-28 lg:grid-cols-[1fr_460px] lg:gap-14 lg:pb-28 lg:pt-36 xl:gap-20">
 
         <div>

@@ -27,7 +27,7 @@ export default function Nosotros() {
   return (
     <section className="bg-white py-24 lg:py-32">
       <div className="container-site">
-        <div id="nosotros" className="mb-16 max-w-2xl scroll-mt-[88px] lg:scroll-mt-10">
+        <div id="nosotros" className="mb-16 max-w-2xl scroll-mt-20">
           <FadeIn>
             <span className="section-label">{t('label')}</span>
           </FadeIn>
