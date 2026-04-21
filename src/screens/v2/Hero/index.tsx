@@ -43,9 +43,19 @@ function GlowCard({ children, delay = 0, speed = 9, startFraction = 0, clockwise
   return (
     <motion.div
       ref={wrapRef}
-      initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.5, ease: EASE }}
-      className="group relative rounded-2xl border border-gray-100 bg-white p-5 shadow-sm shadow-gray-200/80 transition-shadow duration-300 hover:shadow-md hover:shadow-gray-200"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ background: 'rgba(255,255,255,0.13)' }}
+      transition={{
+        opacity:    { delay, duration: 0.5, ease: EASE },
+        y:          { delay, duration: 0.5, ease: EASE },
+        background: { duration: 0.2, ease: 'easeOut' },
+      }}
+      style={{
+        background: 'rgba(255,255,255,0.07)',
+        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.28), 0 2px 4px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.2), 0 24px 48px rgba(0,0,0,0.16)',
+      }}
+      className="group relative rounded-2xl border border-white/30 p-5"
     >
       {perimeter > 0 && (
         <svg className="pointer-events-none absolute inset-0" width={size.w} height={size.h} style={{ overflow: 'visible' }}>
@@ -94,15 +104,29 @@ export default function HeroV2() {
   ];
 
   return (
-    <section id="hero" className="relative flex min-h-screen items-center overflow-hidden bg-[#FAFAFA]">
+    <section id="hero" className="relative flex min-h-screen items-center overflow-hidden" style={{ background: '#F05C10' }}>
 
-      <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-brand-primary/6 blur-[120px]" />
-      <div className="absolute -bottom-40 left-[20%] h-[400px] w-[400px] rounded-full bg-brand-primary/4 blur-[100px]" />
-      <div className="absolute inset-0 opacity-[0.45]" style={{ backgroundImage: 'radial-gradient(circle, #e5e7eb 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-      <div className="absolute left-0 top-0 h-[2px] w-48 bg-gradient-to-r from-brand-primary to-transparent" />
-      <div className="absolute left-0 top-0 h-48 w-[2px] bg-gradient-to-b from-brand-primary to-transparent" />
-      <div className="absolute bottom-0 right-0 h-[2px] w-48 bg-gradient-to-l from-brand-primary/50 to-transparent" />
-      <div className="absolute bottom-0 right-0 h-48 w-[2px] bg-gradient-to-t from-brand-primary/50 to-transparent" />
+      <style>{`@keyframes v2-grain{0%{transform:translate(0,0)}25%{transform:translate(-2%,-3%)}50%{transform:translate(3%,1%)}75%{transform:translate(-1%,4%)}100%{transform:translate(2%,-2%)}}`}</style>
+
+      {/* ── Mesh gradient base ── */}
+      <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 80% at 15% 15%,#FF9A5C 0%,transparent 52%),radial-gradient(ellipse 70% 60% at 85% 8%,#D84E0A 0%,transparent 48%),radial-gradient(ellipse 60% 70% at 98% 65%,#B83508 0%,transparent 52%),radial-gradient(ellipse 80% 55% at 2% 82%,#FF8C42 0%,transparent 48%),radial-gradient(ellipse 55% 80% at 50% 48%,#F86213 0%,transparent 58%),radial-gradient(ellipse 85% 50% at 38% 95%,#E55010 0%,transparent 52%)' }} />
+
+      {/* ── Animated mesh overlay ── */}
+      <motion.div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse 52% 42% at 68% 38%,rgba(255,195,115,0.38) 0%,transparent 58%),radial-gradient(ellipse 42% 52% at 28% 62%,rgba(195,55,5,0.28) 0%,transparent 58%)' }}
+        animate={{ opacity: [0.55, 1, 0.55], scale: [1, 1.06, 1] }}
+        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      {/* ── Grain texture ── */}
+      <div
+        className="pointer-events-none absolute opacity-[0.042]"
+        style={{ inset: '-50%', width: '200%', height: '200%', backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.78\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'300\' height=\'300\' filter=\'url(%23n)\'/%3E%3C/svg%3E")', animation: 'v2-grain 0.4s steps(2) infinite' }}
+      />
+
+      {/* ── Center soft glow ── */}
+      <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 58% 48% at 50% 50%,rgba(255,255,255,0.06) 0%,transparent 60%)' }} />
 
       <div className="container-site relative z-10 grid grid-cols-1 items-center gap-10 pb-24 pt-28 lg:grid-cols-[1fr_460px] lg:gap-14 lg:pb-28 lg:pt-36 xl:gap-20">
 
@@ -110,33 +134,33 @@ export default function HeroV2() {
           <motion.div
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.55, ease: EASE }}
-            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-brand-primary/20 bg-brand-primary/8 px-4 py-1.5"
+            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/40 bg-white/15 px-4 py-1.5 backdrop-blur-sm"
           >
             <span className="relative flex h-2 w-2 shrink-0">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-primary opacity-50" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-primary" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
             </span>
-            <span className="text-[11px] font-semibold uppercase tracking-widest text-brand-primary">{t('eyebrow')}</span>
+            <span className="text-[11px] font-semibold uppercase tracking-widest text-white/90">{t('eyebrow')}</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.27, duration: 0.65, ease: EASE }}
-            className="font-display text-[2.5rem] font-extrabold leading-[1.07] tracking-tight text-gray-900 sm:text-5xl lg:text-[3.25rem] xl:text-6xl"
+            className="font-display text-[2.5rem] font-extrabold leading-[1.07] tracking-tight text-white drop-shadow-sm sm:text-5xl lg:text-[3.25rem] xl:text-6xl"
           >
             {t('title_line1')}{' '}
             <span className="relative inline-block">
-              <span className="relative z-10 text-brand-primary">{t('title_line2')}</span>
-              <span className="absolute -bottom-0.5 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-brand-primary to-brand-accent opacity-40" />
+              <span className="relative z-10 text-[rgba(60,15,2,0.85)]">{t('title_line2')}</span>
+              <span className="absolute -bottom-0.5 left-0 right-0 h-[3px] rounded-full bg-white/40" />
             </span>
             <br />
-            <span className="text-gray-800">{t('title_line3')}</span>
+            <span className="text-white">{t('title_line3')}</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6, ease: EASE }}
-            className="mt-6 max-w-[480px] text-base leading-relaxed text-gray-500 sm:text-[1.05rem]"
+            className="mt-6 max-w-[480px] text-base leading-relaxed text-white/75 sm:text-[1.05rem]"
           >
             {t('subtitle')}
           </motion.p>
@@ -146,9 +170,9 @@ export default function HeroV2() {
             transition={{ delay: 0.52, duration: 0.5, ease: EASE }}
             className="mt-9"
           >
-            <a href="#contacto" className="inline-flex items-center gap-2.5 rounded-xl bg-gray-900 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-gray-900/15 transition-all duration-200 hover:bg-brand-primary hover:shadow-brand-primary/25">
+            <a href="#contacto" className="inline-flex items-center gap-2.5 rounded-xl bg-white/95 px-7 py-3.5 text-sm font-bold text-brand-primary shadow-xl shadow-black/15 transition-all duration-200 hover:bg-white hover:shadow-2xl hover:shadow-black/20">
               <span className="relative mr-1 flex h-2 w-2 shrink-0">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-primary opacity-70" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-primary opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-primary" />
               </span>
               {t('cta')}
@@ -158,14 +182,14 @@ export default function HeroV2() {
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ delay: 0.72, duration: 0.7 }}
-            className="mt-12 flex flex-wrap gap-10 border-t border-gray-200 pt-8"
+            className="mt-12 flex flex-wrap gap-10 border-t border-white/25 pt-8"
           >
             {STATS.map(({ value, suffix, label }, i) => (
               <div key={label}>
-                <p className="font-display text-2xl font-extrabold text-gray-900 sm:text-3xl">
+                <p className="font-display text-2xl font-extrabold text-white drop-shadow-sm sm:text-3xl">
                   <CountUp to={value} suffix={suffix} delay={1 + i * 0.15} />
                 </p>
-                <p className="mt-0.5 text-xs tracking-wide text-gray-400">{label}</p>
+                <p className="mt-0.5 text-xs tracking-wide text-white/55">{label}</p>
               </div>
             ))}
           </motion.div>
@@ -176,29 +200,29 @@ export default function HeroV2() {
           transition={{ delay: 0.45, duration: 0.8, ease: EASE }}
           className="relative grid grid-cols-2 gap-3"
         >
-          <div className="pointer-events-none absolute -inset-8 rounded-[3rem] bg-brand-primary/4 blur-3xl" />
+          <div className="pointer-events-none absolute -inset-8 rounded-[3rem] blur-3xl" />
           {CARDS.map((card, i) => (
             <GlowCard key={card.label} delay={0.6 + i * 0.1} speed={card.speed} startFraction={card.startFraction} clockwise={card.clockwise}>
               <div className="mb-3 flex items-start justify-between">
-                <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-gray-400">{card.label}</p>
-                <motion.span className="text-brand-primary/60" animate={{ scale: [1, 1.18, 1] }} transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4, ease: 'easeInOut' }}>
+                <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-white/55">{card.label}</p>
+                <motion.span className="text-white/75" animate={{ scale: [1, 1.18, 1] }} transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4, ease: 'easeInOut' }}>
                   {card.icon}
                 </motion.span>
               </div>
-              <p className="font-display text-[1.75rem] font-extrabold tracking-tight text-gray-900">
+              <p className="font-display text-[1.75rem] font-extrabold tracking-tight text-white">
                 <CountUp to={card.value} suffix={card.suffix} delay={0.7 + i * 0.15} />
               </p>
-              <p className="mt-1 text-[11px] font-semibold text-brand-primary">{card.sub}</p>
+              <p className="mt-1 text-[11px] font-semibold text-orange-100/90">{card.sub}</p>
             </GlowCard>
           ))}
-          <div className="col-span-2 mt-1 h-px w-full bg-gradient-to-r from-transparent via-brand-primary/20 to-transparent" />
+          <div className="col-span-2 mt-1 h-px w-full bg-gradient-to-r from-transparent via-white/30 to-transparent" />
         </motion.div>
 
       </div>
 
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }} className="flex h-9 w-5 items-start justify-center rounded-full border border-gray-300 pt-1.5">
-          <div className="h-1.5 w-0.5 rounded-full bg-brand-primary/70" />
+        <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }} className="flex h-9 w-5 items-start justify-center rounded-full border border-white/45 bg-white/15 pt-1.5 backdrop-blur-sm">
+          <div className="h-1.5 w-0.5 rounded-full bg-white/75" />
         </motion.div>
       </motion.div>
 

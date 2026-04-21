@@ -101,7 +101,8 @@
     "field_mensaje": "Mensaje (opcional)",
     "submit": "Enviar mensaje",
     "success_title": "¡Mensaje enviado!",
-    "success_desc": "Un ejecutivo se contactará contigo en menos de 24 horas."
+    "success_desc": "Un ejecutivo se contactará contigo en menos de 24 horas.",
+    "social_label": "Síguenos en nuestras redes"
   },
   "footer": {
     "tagline": "Liquidez rápida para la pequeña y mediana empresa. Operamos en Chile y Perú.",

@@ -101,7 +101,8 @@
     "field_mensaje": "Message (optional)",
     "submit": "Send message",
     "success_title": "Message sent!",
-    "success_desc": "An executive will contact you within 24 hours."
+    "success_desc": "An executive will contact you within 24 hours.",
+    "social_label": "Follow us on social media"
   },
   "footer": {
     "tagline": "Fast liquidity for small and medium-sized businesses. Operating in Chile and Peru.",

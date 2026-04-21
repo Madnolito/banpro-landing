@@ -6,6 +6,28 @@ const nextConfig: NextConfig = {
     locales: ['es', 'en'],
     defaultLocale: 'es',
   },
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+  },
+  webpack(config) {
+    const fileLoaderRule = config.module.rules.find((rule: { test?: { test?: (s: string) => boolean } }) =>
+      rule.test?.test?.('.svg'),
+    );
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/i;
+    }
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
+    return config;
+  },
 };
 
 export default nextConfig;

@@ -28,7 +28,7 @@ function LangToggle({ locale, onSwitch }: Readonly<{ locale: string; onSwitch: (
         <span
           key={lang}
           className={clsx(
-            'rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-widest transition-all duration-200',
+            'rounded-full px-3 py-1 text-[12.5px] font-bold uppercase tracking-widest transition-all duration-200',
             locale === lang
               ? 'bg-brand-primary text-white shadow-md shadow-brand-primary/40'
               : 'text-gray-400 hover:text-gray-600',
@@ -100,11 +100,11 @@ export function Navbar() {
       className={clsx(
         'fixed inset-x-0 top-0 z-50 transition-all duration-500',
         scrolled
-          ? 'border-b border-gray-100 bg-white/90 shadow-sm shadow-black/[0.04] backdrop-blur-md'
-          : 'border-b border-transparent bg-white',
+          ? 'border-b border-gray-200/60 bg-white shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08),inset_0_-1px_0_rgba(255,255,255,0.9)]'
+          : 'border-b border-gray-100/50 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04),inset_0_-1px_0_rgba(255,255,255,0.7)]',
       )}
     >
-      <div className="container-site flex h-16 items-center justify-between lg:h-[70px]">
+<div className="container-site flex h-16 items-center justify-between lg:h-[70px]">
 
         {/* Logo */}
         <motion.a {...anim(0.05)} href="#" className="flex items-center">
@@ -112,29 +112,45 @@ export function Navbar() {
             src="/logotipo-removebg-preview.png"
             alt="Banpro Factoring"
             width={130}
-            height={48}
-            className="h-9 w-auto object-contain"
+            height={50}
+            className="h-[50px] w-auto object-contain"
             priority
           />
         </motion.a>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav
+          className="hidden items-center gap-0.5 lg:flex"
+          onMouseLeave={() => setHoveredLink(null)}
+        >
           {NAV_LINKS.map(({ href, key }, i) => (
             <motion.a
               key={href}
               {...anim(0.1 + i * 0.04)}
               href={href}
               onMouseEnter={() => setHoveredLink(href)}
-              onMouseLeave={() => setHoveredLink(null)}
-              className="relative px-3 py-2 text-sm font-medium text-gray-500 transition-colors duration-200 hover:text-gray-900"
+              whileHover={{ scale: 1.06 }}
+              transition={{
+                default: { delay: 0.1 + i * 0.04, duration: 0.2, ease: EASE },
+                scale: { type: 'spring', stiffness: 300, damping: 22 },
+              }}
+              className="relative px-3.5 pb-2.5 pt-2 text-[12.5px] font-semibold uppercase tracking-wider"
             >
-              {t(key)}
+              <motion.span
+                className="relative z-10 block"
+                animate={{
+                  color: hoveredLink === href ? '#F86213' : '#374151',
+                }}
+                transition={{ duration: 0.18, ease: 'easeOut' }}
+              >
+                {t(key)}
+              </motion.span>
               {hoveredLink === href && (
                 <motion.span
                   layoutId="nav-underline"
-                  className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-brand-primary"
-                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                  className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full bg-brand-primary"
+                  initial={false}
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
             </motion.a>
@@ -158,14 +174,16 @@ export function Navbar() {
             ))}
           </div>
           <LangToggle locale={locale} onSwitch={switchLang} layoutId="lang-pill" />
-          <a
+          <motion.a
             href="https://webfactoring2.banpro.cl/index.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary py-2 text-xs"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.93 }}
+            className="btn-primary rounded-full py-2 text-[11px] uppercase tracking-wider"
           >
             {t('webfactoring')}
-          </a>
+          </motion.a>
         </motion.div>
 
         {/* Hamburger */}
