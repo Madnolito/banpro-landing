@@ -116,7 +116,7 @@ export function Navbar() {
             alt="Banpro Factoring"
             width={130}
             height={50}
-            className="h-[50px] w-auto object-contain"
+            className="h-[50px] object-contain"
             priority
           />
         </motion.a>
@@ -132,10 +132,10 @@ export function Navbar() {
               {...anim(0.1 + i * 0.04)}
               href={href}
               onMouseEnter={() => setHoveredLink(href)}
-              whileHover={{ scale: 1.06 }}
+              whileHover={{ y: -2.5 }}
               transition={{
-                default: { delay: 0.1 + i * 0.04, duration: 0.2, ease: EASE },
-                scale: { type: 'spring', stiffness: 300, damping: 22 },
+                duration: 0.28,
+                ease: [0.16, 1, 0.3, 1], // easing más premium aún
               }}
               className="relative px-3.5 pb-2.5 pt-2 text-[11.5px] font-semibold uppercase tracking-wider"
             >
