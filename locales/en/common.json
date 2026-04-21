@@ -1,11 +1,12 @@
 {
   "meta": {
     "title": "Banpro Factoring — Fast liquidity for your business",
-    "description": "Banpro Factoring S.A. provides immediate liquidity to SMEs through invoice purchasing. Credit line opening in 24 hours. 17+ branches across Chile."
+    "description": "Banpro Factoring S.A. provides immediate liquidity to SMEs through invoice purchasing. Credit line opening in 24 hours. 11 branches across Chile."
   },
   "nav": {
     "about": "About",
     "factoring": "Factoring",
+    "advantages": "Advantages",
     "requirements": "Requirements",
     "branches": "Branches",
     "contact": "Contact",
@@ -30,6 +31,19 @@
     "card3_sub": "From request to disbursement",
     "card4_label": "CONFIDENTIALITY",
     "card4_sub": "No portfolio assignment"
+  },
+  "ventajas": {
+    "label": "Strategic differentiator",
+    "title": "Total Confidentiality",
+    "subtitle": "We operate with our own funds, without reassigning your invoices to third parties.",
+    "con_title": "With reassignment",
+    "con_item1": "Invoice sold to third parties",
+    "con_item2": "Debtor notified",
+    "con_item3": "Damaged reputation",
+    "sin_title": "Without reassignment",
+    "sin_item1": "Private invoices",
+    "sin_item2": "No third-party notification",
+    "sin_item3": "Financial strength"
   },
   "nosotros": {
     "label": "Who we are",
@@ -78,7 +92,7 @@
   },
   "sucursales": {
     "label": "National presence",
-    "title": "17 branches across Chile.",
+    "title": "11 branches across Chile.",
     "description": "From Iquique to Punta Arenas, we are where your business needs us.",
     "footer_note": "Can't find a nearby branch? Contact us — we operate throughout Chile.",
     "cta": "Contact us"

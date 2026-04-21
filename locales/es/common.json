@@ -1,11 +1,12 @@
 {
   "meta": {
     "title": "Banpro Factoring — Liquidez rápida para tu empresa",
-    "description": "Banpro Factoring S.A. entrega liquidez inmediata a PYMEs mediante la compra de cuentas por cobrar. Apertura de línea en 24 horas. 17+ sucursales en Chile."
+    "description": "Banpro Factoring S.A. entrega liquidez inmediata a PYMEs mediante la compra de cuentas por cobrar. Apertura de línea en 24 horas. 11 sucursales en Chile."
   },
   "nav": {
     "about": "Nosotros",
     "factoring": "Factoring",
+    "advantages": "Ventajas",
     "requirements": "Requisitos",
     "branches": "Sucursales",
     "contact": "Contacto",
@@ -30,6 +31,19 @@
     "card3_sub": "Desde solicitud a giro",
     "card4_label": "CONFIDENCIALIDAD",
     "card4_sub": "Sin recesión de cartera"
+  },
+  "ventajas": {
+    "label": "Diferenciador estratégico",
+    "title": "Confidencialidad Total",
+    "subtitle": "Operamos con fondos propios, sin receder sus facturas a terceros.",
+    "con_title": "Con recesión",
+    "con_item1": "Factura vendida a terceros",
+    "con_item2": "Deudor notificado",
+    "con_item3": "Imagen dañada",
+    "sin_title": "Sin recesión",
+    "sin_item1": "Facturas privadas",
+    "sin_item2": "Sin notificación a terceros",
+    "sin_item3": "Solidez financiera"
   },
   "nosotros": {
     "label": "Quiénes somos",
@@ -78,7 +92,7 @@
   },
   "sucursales": {
     "label": "Presencia nacional",
-    "title": "17 sucursales a lo largo de Chile.",
+    "title": "11 sucursales a lo largo de Chile.",
     "description": "Desde Iquique hasta Punta Arenas, estamos donde tu empresa nos necesita.",
     "footer_note": "¿No encuentras una sucursal cerca? Contáctanos, operamos en todo Chile.",
     "cta": "Contáctanos"

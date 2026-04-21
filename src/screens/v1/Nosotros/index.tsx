@@ -12,21 +12,23 @@ const VALUES = [
   { Icon: EyeIcon, titleKey: 'v3_title', descKey: 'v3_desc' },
 ] as const;
 
-const PRESIDENT = { name: 'José Tomás Covarrubias Valenzuela', role: 'Presidente', initials: 'JTC' };
-
-const DIRECTORS = [
-  { name: 'Rafael Covarrubias Valenzuela', initials: 'RCV' },
-  { name: 'Norberto Marambio Díaz', initials: 'NMD' },
-  { name: 'Maria Jose Vicuña Fernandez', initials: 'MJV' },
-  { name: 'José Tomás Vicuña Fernandez', initials: 'JTV' },
+const DIRECTORIO = [
+  { name: 'José Tomás Covarrubias Valenzuela', initials: 'JTC', role: 'Presidente' },
+  { name: 'Rafael Covarrubias Valenzuela', initials: 'RCV', role: '' },
+  { name: 'Norberto Marambio Díaz', initials: 'NMD', role: '' },
+  { name: 'Maria Jose Vicuña Fernandez', initials: 'MJV', role: '' },
+  { name: 'José Tomás Vicuña Fernandez', initials: 'JTV', role: '' },
 ];
 
 export default function Nosotros() {
   const t = useTranslations('nosotros');
 
   return (
-    <section className="bg-white py-24 lg:py-32">
-      <div className="container-site">
+    <section className="relative overflow-hidden bg-gray-50 py-24 lg:py-32">
+      {/* Decorative gradient bleed from the right */}
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-brand-light/50 to-transparent" />
+
+      <div className="container-site relative">
         <div id="nosotros" className="mb-16 max-w-2xl scroll-mt-20">
           <FadeIn>
             <span className="section-label">{t('label')}</span>
@@ -73,45 +75,35 @@ export default function Nosotros() {
             ))}
           </div>
 
-          {/* Directorio */}
+          {/* Directorio — dark card */}
           <FadeIn delay={0.15} dir="right">
-            <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.12),0_2px_8px_-2px_rgba(0,0,0,0.06)]">
-
+            <div className="overflow-hidden rounded-2xl border border-orange-100 bg-orange-50/40 p-8 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.10)]">
               {/* Header */}
               <div className="mb-6 flex items-center justify-between">
-                <p className="section-label text-base">{t('board_label')}</p>
-                <span className="rounded-full bg-brand-light px-2.5 py-1 text-[10px] font-semibold text-brand-primary">
+                <p className="font-display text-lg font-bold text-gray-900">{t('board_label')}</p>
+                <span className="rounded-full bg-brand-primary/15 px-3 py-1 text-xs font-bold text-brand-primary">
                   5 miembros
                 </span>
               </div>
 
-              {/* President */}
-              <div className="relative mb-5 flex items-center gap-4 rounded-r-2xl border-l-4 border-brand-primary bg-brand-light py-4 pl-5 pr-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-primary text-sm font-bold text-white shadow-md shadow-orange-200">
-                  {PRESIDENT.initials}
-                </div>
-                <div className="min-w-0">
-                  <span className="mb-0.5 block text-[10px] font-bold uppercase tracking-widest text-brand-primary">
-                    {PRESIDENT.role}
-                  </span>
-                  <p className="text-sm font-bold leading-snug text-gray-900">{PRESIDENT.name}</p>
-                </div>
-              </div>
-
-              {/* Directors list */}
-              <div className="flex flex-col divide-y divide-gray-100">
-                {DIRECTORS.map(({ name, initials }, i) => (
+              {/* List */}
+              <div className="flex flex-col divide-y divide-orange-100">
+                {DIRECTORIO.map(({ name, initials, role }, i) => (
                   <FadeIn key={name} delay={0.25 + i * 0.07} dir="left">
                     <div className="flex items-center gap-4 py-3.5">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-orange-100 bg-brand-light text-[11px] font-bold text-brand-primary">
                         {initials}
                       </div>
-                      <p className="text-sm text-gray-700">{name}</p>
+                      <p className="flex-1 text-sm text-gray-700">{name}</p>
+                      {role && (
+                        <span className="ml-4 shrink-0 rounded-full bg-brand-primary/15 px-3 py-0.5 text-xs font-semibold text-brand-primary">
+                          {role}
+                        </span>
+                      )}
                     </div>
                   </FadeIn>
                 ))}
               </div>
-
             </div>
           </FadeIn>
         </div>

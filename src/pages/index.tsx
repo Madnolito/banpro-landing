@@ -11,6 +11,7 @@ import FactoringV1 from '@/screens/v1/Factoring';
 import FooterV1 from '@/screens/v1/Footer';
 import HeroV1 from '@/screens/v1/Hero';
 import NosotrosV1 from '@/screens/v1/Nosotros';
+import VentajasV1 from '@/screens/v1/Ventajas';
 import RequisitosV1 from '@/screens/v1/Requisitos';
 import SucursalesV1 from '@/screens/v1/Sucursales';
 
@@ -56,6 +57,7 @@ const Home: NextPage = () => {
         <Hero />
         <Nosotros />
         <Factoring />
+        {v === '1' && <VentajasV1 />}
         <Requisitos />
         <Sucursales />
         <Contacto />
