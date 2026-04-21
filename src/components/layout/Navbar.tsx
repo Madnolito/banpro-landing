@@ -67,7 +67,7 @@ export function Navbar() {
       if (y > lastScrollY.current + 8 && y > 80) {
         setHidden(true);
         setOpen(false);
-      } else if (y < lastScrollY.current - 8) {
+      } else if (y < lastScrollY.current - 2) {
         setHidden(false);
       }
       lastScrollY.current = y;
