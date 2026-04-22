@@ -47,7 +47,7 @@ function GlowCard({ children, delay = 0, speed = 5, startFraction = 0, clockwise
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5, ease: EASE }}
-      className="group relative rounded-2xl border border-white/[0.06] bg-[#1f1c1a] p-5"
+      className="group relative rounded-2xl border border-white/[0.06] bg-[#1f1c1a] p-7"
     >
       {perimeter > 0 && (
         <svg className="pointer-events-none absolute inset-0" width={size.w} height={size.h} style={{ overflow: 'visible' }}>
@@ -191,9 +191,14 @@ export default function Hero() {
       </div>
 
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }} className="flex h-9 w-5 items-start justify-center rounded-full border border-white/10 pt-1.5">
-          <div className="h-1.5 w-0.5 rounded-full bg-brand-primary/60" />
-        </motion.div>
+        <motion.svg
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+          className="h-5 w-5 text-white/25"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </motion.svg>
       </motion.div>
 
     </section>

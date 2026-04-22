@@ -104,20 +104,20 @@ export function Navbar() {
         'fixed inset-x-0 top-0 z-50 transition-all duration-500',
         hidden && 'pointer-events-none',
         scrolled
-          ? 'border-b border-gray-200/60 bg-white/[0.97] backdrop-blur-sm shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08),inset_0_-1px_0_rgba(255,255,255,0.9)]'
-          : 'border-b border-gray-100/50 bg-white/95 backdrop-blur-sm shadow-[0_1px_8px_rgba(0,0,0,0.04),inset_0_-1px_0_rgba(255,255,255,0.7)]',
+          ? 'border-b border-gray-200/60 bg-white shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08)]'
+          : 'border-b border-gray-100/50 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]',
       )}
     >
-      <div className="container-site flex h-16 items-center justify-between lg:h-[70px]">
+      <div className="container-site flex h-20 items-center justify-between lg:h-[90px]">
 
         {/* Logo */}
         <motion.a {...anim(0.05)} href="#" className="flex items-center">
           <Image
-            src="/logotipo-removebg-preview.png"
+            src="/logotipo.png"
             alt="Banpro Factoring"
-            width={130}
-            height={50}
-            className="h-[50px] object-contain"
+            width={156}
+            height={60}
+            className="h-[60px] object-contain"
             priority
           />
         </motion.a>
@@ -138,12 +138,12 @@ export function Navbar() {
                 duration: 0.28,
                 ease: [0.16, 1, 0.3, 1], // easing más premium aún
               }}
-              className="relative px-3.5 pb-2.5 pt-2 text-[11.5px] font-semibold uppercase tracking-wider"
+              className="relative px-3.5 pb-2.5 pt-2 text-[12px] font-semibold uppercase tracking-wider"
             >
               <motion.span
                 className="relative z-10 block"
                 animate={{
-                  color: hoveredLink === href ? '#F86213' : '#374151',
+                  color: hoveredLink === href ? '#F86213' : '#111827',
                 }}
                 transition={{ duration: 0.18, ease: 'easeOut' }}
               >
