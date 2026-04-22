@@ -55,9 +55,9 @@ const Home: NextPage = () => {
 
       <main>
         <Hero />
-        <Nosotros />
         <Factoring />
         {v === '1' && <VentajasV1 />}
+        <Nosotros />
         <Requisitos />
         <Sucursales />
         <Contacto />

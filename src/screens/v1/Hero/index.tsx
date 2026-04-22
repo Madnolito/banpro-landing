@@ -47,7 +47,7 @@ function GlowCard({ children, delay = 0, speed = 5, startFraction = 0, clockwise
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5, ease: EASE }}
-      className="group relative rounded-2xl border border-white/[0.06] bg-[#0d0d14] p-5"
+      className="group relative rounded-2xl border border-white/[0.06] bg-[#1f1c1a] p-5"
     >
       {perimeter > 0 && (
         <svg className="pointer-events-none absolute inset-0" width={size.w} height={size.h} style={{ overflow: 'visible' }}>
@@ -96,13 +96,12 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative flex min-h-screen items-center overflow-hidden bg-[#08080d]">
+    <section id="hero" className="relative flex min-h-screen items-center overflow-hidden bg-[#2C2926]">
 
-      <div className="absolute inset-0 bg-gradient-to-br from-[#08080d] via-[#120600] to-[#08080d]" />
-      <div className="absolute right-[8%] top-[10%] h-[600px] w-[600px] rounded-full bg-brand-primary/10 blur-[130px]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#2C2926] via-[#2e1a08] to-[#2C2926]" />
+      <div className="absolute right-[8%] top-[10%] h-[600px] w-[600px] rounded-full bg-brand-primary/5 blur-[130px]" />
       <div className="absolute -bottom-32 left-[3%] h-[400px] w-[400px] rounded-full bg-brand-accent/8 blur-[110px]" />
       <div className="absolute left-[45%] top-[55%] h-[300px] w-[300px] rounded-full bg-brand-secondary/8 blur-[90px]" />
-      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
       <div className="container-site relative z-10 grid grid-cols-1 items-center gap-10 pb-24 pt-28 lg:grid-cols-[1fr_460px] lg:gap-14 lg:pb-28 lg:pt-36 xl:gap-20">
 
         <div>

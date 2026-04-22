@@ -92,7 +92,7 @@ export default function Sucursales() {
     setSelected(prev => (prev === id ? null : id));
 
   return (
-    <section id="sucursales" className="bg-brand-dark py-24 lg:py-32 overflow-hidden scroll-mt-20">
+    <section id="sucursales" className="bg-[#292524] py-24 lg:py-32 overflow-hidden scroll-mt-20">
       <div className="container-site">
 
         {/* ── Header ─────────────────────────────────── */}
@@ -116,7 +116,7 @@ export default function Sucursales() {
             <div className="relative lg:flex-1 h-[460px] lg:h-auto">
               <div className="sticky top-24 h-[460px] lg:h-[580px] overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111]">
                 {/* Status pill */}
-                <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-full border border-white/[0.06] bg-brand-dark/85 px-3 py-1.5 backdrop-blur-md">
+                <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-full border border-white/[0.06] bg-[#292524]/85 px-3 py-1.5 backdrop-blur-md">
                   <span className={`h-1.5 w-1.5 rounded-full transition-colors duration-300 ${selected ? 'bg-brand-primary animate-pulse' : 'bg-white/30'}`} />
                   <span className="text-[11px] font-medium text-white/55">
                     {selectedCity ? selectedCity.name : '11 sucursales'}
@@ -127,7 +127,7 @@ export default function Sucursales() {
                 {selected && (
                   <button
                     onClick={() => setSelected(null)}
-                    className="absolute top-4 right-4 z-20 flex items-center gap-1.5 rounded-full border border-white/[0.06] bg-brand-dark/85 px-3 py-1.5 backdrop-blur-md text-[11px] font-medium text-white/40 transition-colors hover:text-white"
+                    className="absolute top-4 right-4 z-20 flex items-center gap-1.5 rounded-full border border-white/[0.06] bg-[#292524]/85 px-3 py-1.5 backdrop-blur-md text-[11px] font-medium text-white/40 transition-colors hover:text-white"
                   >
                     <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />

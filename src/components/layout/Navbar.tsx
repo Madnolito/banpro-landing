@@ -10,9 +10,9 @@ import clsx from 'clsx';
 import { WFButton } from './WFButton';
 
 const NAV_LINKS = [
-  { href: '#nosotros', key: 'about' },
   { href: '#factoring', key: 'factoring' },
   { href: '#ventajas', key: 'advantages' },
+  { href: '#nosotros', key: 'about' },
   { href: '#requisitosparaoperar', key: 'requirements' },
   { href: '#sucursales', key: 'branches' },
   { href: '#contacto', key: 'contact' },

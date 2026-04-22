@@ -24,7 +24,7 @@ export default function Nosotros() {
   const t = useTranslations('nosotros');
 
   return (
-    <section className="relative overflow-hidden bg-gray-50 py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-[#F5F0EB] py-24 lg:py-32">
       {/* Decorative gradient bleed from the right */}
       <div className="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-brand-light/50 to-transparent" />
 
@@ -47,7 +47,7 @@ export default function Nosotros() {
             {VALUES.map(({ Icon, titleKey, descKey }, i) => (
               <FadeIn key={titleKey} delay={i * 0.12} dir="left" className="h-full">
                 <motion.div
-                  className="relative flex h-full w-full items-center gap-5 overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.08)]"
+                  className="group relative flex h-full w-full items-center gap-5 overflow-hidden rounded-2xl border border-[#E8E2DB] bg-white p-6 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.08)]"
                   initial="rest"
                   whileHover="hover"
                   animate="rest"
@@ -59,13 +59,14 @@ export default function Nosotros() {
                     variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
                     transition={{ duration: 0.2 }}
                   />
-                  <motion.div
-                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl"
-                    variants={{ rest: { backgroundColor: '#ffedd5', color: '#F86213' }, hover: { backgroundColor: '#F86213', color: '#ffffff' } }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Icon className="h-8 w-8" />
-                  </motion.div>
+                  <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#ffedd5] text-brand-primary transition-colors duration-200 group-hover:text-white">
+                    <motion.div
+                      className="absolute inset-0 rounded-xl bg-brand-primary"
+                      variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
+                      transition={{ duration: 0.2 }}
+                    />
+                    <Icon className="relative h-8 w-8" />
+                  </div>
                   <div>
                     <h3 className="font-display text-lg font-bold text-gray-900">{t(titleKey)}</h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-gray-500">{t(descKey)}</p>
@@ -77,7 +78,7 @@ export default function Nosotros() {
 
           {/* Directorio — dark card */}
           <FadeIn delay={0.15} dir="right">
-            <div className="overflow-hidden rounded-2xl border border-orange-100 bg-orange-50/40 p-8 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.10)]">
+            <div className="overflow-hidden rounded-2xl border border-[#E8E2DB] bg-white/80 p-8 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.10)]">
               {/* Header */}
               <div className="mb-6 flex items-center justify-between">
                 <p className="font-display text-lg font-bold text-gray-900">{t('board_label')}</p>
@@ -91,7 +92,7 @@ export default function Nosotros() {
                 {DIRECTORIO.map(({ name, initials, role }, i) => (
                   <FadeIn key={name} delay={0.25 + i * 0.07} dir="left">
                     <div className="flex items-center gap-4 py-3.5">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-orange-100 bg-brand-light text-[11px] font-bold text-brand-primary">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#E8E2DB] bg-white text-[11px] font-bold text-brand-primary">
                         {initials}
                       </div>
                       <p className="flex-1 text-sm text-gray-700">{name}</p>

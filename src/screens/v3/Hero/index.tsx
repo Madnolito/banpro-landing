@@ -58,7 +58,7 @@ function GlowCard({ children, delay = 0, speed = 5, startFraction = 0, clockwise
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.55, ease: EASE }}
-      className="group relative rounded-2xl border border-orange-100/80 bg-white/75 p-5 shadow-xl shadow-orange-200/40 backdrop-blur-md"
+      className="group relative rounded-2xl border border-white/[0.06] bg-[#211e1b] p-5"
     >
       {perimeter > 0 && (
         <svg
@@ -145,16 +145,14 @@ export default function HeroV3() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #C44208 0%, #E85510 12%, #F86213 30%, #FF7A30 52%, #FF9A5C 72%, #FFBA88 88%, #FFD0A8 100%)',
-      }}
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#231f1c]"
     >
+      <div className="absolute inset-0 bg-gradient-to-br from-[#231f1c] via-[#2a1506] to-[#231f1c]" />
 
       {/* ── Radial warmth orbs ── */}
       <motion.div
         className="absolute rounded-full blur-[160px]"
-        style={{ width: 800, height: 800, right: '-15%', top: '-18%', background: 'radial-gradient(circle, #F86213cc 0%, #FF8C4280 40%, transparent 70%)' }}
+        style={{ width: 800, height: 800, right: '-15%', top: '-18%', background: 'radial-gradient(circle, #F8621335 0%, #FF8C4218 40%, transparent 70%)' }}
         animate={{ x: [0, 40, -20, 0], y: [0, -30, 40, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
       />
@@ -175,17 +173,8 @@ export default function HeroV3() {
       {PARTICLES.map((p) => <Particle key={`${p.x}-${p.y}`} {...p} />)}
 
       {/* ── Fine grid ── */}
-      <div
-        className="absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(180,70,0,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(180,70,0,0.35) 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
-        }}
-      />
 
       {/* ── Diagonal accent lines ── */}
-      <div className="absolute left-0 top-0 h-px w-[40%] origin-left rotate-[30deg] bg-gradient-to-r from-white/60 to-transparent" />
       <div className="absolute bottom-0 right-0 h-px w-[35%] origin-right -rotate-[25deg] bg-gradient-to-l from-brand-primary/40 to-transparent" />
 
       <div className="container-site relative z-10 grid grid-cols-1 items-center gap-10 pb-24 pt-28 lg:grid-cols-[1fr_460px] lg:gap-14 lg:pb-28 lg:pt-36 xl:gap-20">
@@ -217,7 +206,7 @@ export default function HeroV3() {
             className="font-display text-[2.5rem] font-extrabold leading-[1.07] tracking-tight sm:text-5xl lg:text-[3.25rem] xl:text-6xl"
           >
             <span className="text-white drop-shadow-sm">{t('title_line1')}</span>{' '}
-            <span className="text-gray-800 drop-shadow-sm">{t('title_line2')}</span>
+            <span className="text-brand-primary drop-shadow-sm">{t('title_line2')}</span>
             <br />
             <span className="text-white drop-shadow-sm">{t('title_line3')}</span>
           </motion.h1>
@@ -227,7 +216,7 @@ export default function HeroV3() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.62, duration: 0.6, ease: EASE }}
-            className="mt-6 max-w-[460px] text-base leading-relaxed text-gray-700/80"
+            className="mt-6 max-w-[460px] text-base leading-relaxed text-gray-300/80"
           >
             {t('subtitle')}
           </motion.p>
@@ -260,10 +249,10 @@ export default function HeroV3() {
           >
             {STATS.map(({ value, suffix, label }, i) => (
               <div key={label}>
-                <p className="font-display text-2xl font-extrabold text-gray-900 sm:text-3xl drop-shadow-sm">
+                <p className="font-display text-2xl font-extrabold text-white sm:text-3xl drop-shadow-sm">
                   <CountUp to={value} suffix={suffix} delay={1 + i * 0.15} />
                 </p>
-                <p className="mt-0.5 text-xs tracking-wide text-gray-600/70">{label}</p>
+                <p className="mt-0.5 text-xs tracking-wide text-gray-400">{label}</p>
               </div>
             ))}
           </motion.div>
@@ -276,7 +265,7 @@ export default function HeroV3() {
           transition={{ delay: 0.4, duration: 0.8, ease: EASE }}
           className="relative grid grid-cols-2 gap-3"
         >
-          <div className="pointer-events-none absolute -inset-8 rounded-[3rem] bg-white/20 blur-3xl" />
+          <div className="pointer-events-none absolute -inset-8 rounded-[3rem] bg-brand-primary/10 blur-3xl" />
 
           {CARDS.map((card, i) => (
             <GlowCard key={card.label} delay={0.55 + i * 0.1} speed={card.speed} startFraction={card.startFraction} clockwise={card.clockwise}>
@@ -290,7 +279,7 @@ export default function HeroV3() {
                   {card.icon}
                 </motion.span>
               </div>
-              <p className="font-display text-[1.75rem] font-extrabold tracking-tight text-gray-900">
+              <p className="font-display text-[1.75rem] font-extrabold tracking-tight text-white">
                 <CountUp to={card.value} suffix={card.suffix} delay={0.7 + i * 0.15} />
               </p>
               <p className="mt-1 text-[11px] font-semibold text-brand-primary/80">{card.sub}</p>
