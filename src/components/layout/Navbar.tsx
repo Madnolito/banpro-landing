@@ -163,7 +163,7 @@ export function Navbar() {
 
         {/* Desktop right actions */}
         <motion.div {...anim(0.32)} className="hidden items-center gap-3 lg:flex">
-          <div className="flex items-center rounded-full border border-dashed border-purple-300 bg-purple-50 p-[3px]">
+          {/* <div className="flex items-center rounded-full border border-dashed border-purple-300 bg-purple-50 p-[3px]">
             {['1', '2', '3'].map((v) => (
               <button
                 key={v}
@@ -176,7 +176,7 @@ export function Navbar() {
                 v{v}
               </button>
             ))}
-          </div>
+          </div> */}
           <LangToggle locale={locale} onSwitch={switchLang} layoutId="lang-pill" />
           <WFButton label={t('webfactoring')} />
         </motion.div>

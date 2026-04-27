@@ -91,10 +91,10 @@
     "footnote": "a) Aprobación sujeta a la verificación de antecedentes financieros y legales.\nb) Del estudio de los antecedentes, eventualmente se podría solicitar algún otro documento."
   },
   "sucursales": {
-    "label": "Presencia nacional",
-    "title": "11 sucursales a lo largo de Chile.",
-    "description": "Desde Iquique hasta Punta Arenas, estamos donde tu empresa nos necesita.",
-    "footer_note": "¿No encuentras una sucursal cerca? Contáctanos, operamos en todo Chile.",
+    "label": "Presencia internacional",
+    "title": "Sucursales en Chile y Perú.",
+    "description": "Presentes en ambos países para estar donde tu empresa nos necesita.",
+    "footer_note": "¿No encuentras una sucursal cerca? Contáctanos, operamos en {country} y más.",
     "cta": "Contáctanos"
   },
   "contacto": {

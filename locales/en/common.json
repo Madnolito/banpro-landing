@@ -91,10 +91,10 @@
     "footnote": "a) Approval subject to verification of financial and legal background.\nb) Additional documents may be requested after reviewing the submitted information."
   },
   "sucursales": {
-    "label": "National presence",
-    "title": "11 branches across Chile.",
-    "description": "From Iquique to Punta Arenas, we are where your business needs us.",
-    "footer_note": "Can't find a nearby branch? Contact us — we operate throughout Chile.",
+    "label": "International presence",
+    "title": "Branches in Chile and Peru.",
+    "description": "Present in both countries to be where your business needs us.",
+    "footer_note": "Can't find a nearby branch? Contact us — we operate in {country} and more.",
     "cta": "Contact us"
   },
   "contacto": {
